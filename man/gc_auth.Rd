@@ -8,7 +8,7 @@ gc_auth(
   new_user = FALSE,
   key = getOption("googlecalendar.client_key"),
   secret = getOption("googlecalendar.client_secret"),
-  cache = getOption("googlecalendar.oauth_cache"),
+  cache = getOption("googlecalendar.oauth_cache", TRUE),
   token = NULL,
   verbose = FALSE
 )

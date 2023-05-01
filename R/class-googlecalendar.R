@@ -36,7 +36,8 @@ googlecalendar <- function(...) {
 
 as.googlecalendar <- function(x) UseMethod("as.googlecalendar", x)
 
-as.googlecalendar.data.frame <- function(x) {
+#' @export
+as.googlecalendar.default <- function(x) {
 
   cal <- googlecalendar()
 
