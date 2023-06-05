@@ -2,8 +2,7 @@ build_url <- function(path, fields = NULL, ..., base = .cred$base_url_v3) {
 
   file.path(base, path) %>%
     httr::modify_url(query = c(list(...), list(
-      fields = fields,
-      key = getOption("googlecalendar.client_key")
+      fields = fields
     )))
 
 }
