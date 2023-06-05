@@ -59,7 +59,7 @@ gc_lookup <- function(x, lvar, fixed = FALSE, ..., verbose = TRUE) {
 
   stopifnot(length(x) == 1, is.character(x))
 
-  resp <- GET_resource("users/me/calendarList", fields = "items")
+  resp <- GET_resource("users/me/calendarList")
 
   cals <- json_content(resp, flatten = TRUE)$items
 
