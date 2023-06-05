@@ -62,31 +62,10 @@ gc_event_import <- function(x, events, sendNotifications = FALSE,
 
   out <-
     purrr::pmap(events, function(...) {
-      e <- list(...)
-      body <- as.body(e)
-      resp <- POST_resource(path, body = body, sendNotifications =
-                            unclass(e)[["sendNotifications"]] %||%
-                              sendNotifications)
-      id <- json_content(resp)$id
-
-      if (methods::is(id, "character")) {
-        if (verbose) {
-          sprintf("Successfully created event starting: %s",
-                  body$start$dateTime %||% body$start$date) %>%
-            message()
-        }
-      } else {
-        if (verbose) {
-          sprintf("Something went wrong creating event: %s",
-                  body$start$dateTime %||% body$start$date %||% "???") %>%
-            message()
-        }
-        return(NA_character_)
-      }
-
-      id
-
-    }, .to = "id")
+      l <- list(...)
+      l$x <- x
+      do.call(gc_event_new, l)
+    })
 
   invisible(unlist(out$id))
 
