@@ -53,7 +53,8 @@ gc_event_new <- function(x, start, end, ..., sendNotifications = FALSE,
             is.list(start), is.list(end))
 
   path <- file.path("calendars", x$id, "events")
-  body <- c(list(end = end, start = start), list(...))
+  params <- list(...)
+  body <- c(list(end = end, start = start), params)
   resp <- POST_resource(path, body = body,
                         sendNotifications = sendNotifications)
 
