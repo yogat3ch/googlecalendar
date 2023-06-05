@@ -101,6 +101,7 @@ event <- function() {
 
 as.event <- function(x) UseMethod("as.event", x)
 
+#' @export
 as.event.list <- function(x) {
 
   ev <- event()
@@ -185,7 +186,8 @@ as.event.list <- function(x) {
   ev
 
 }
-
+#' @export
+as.event.data.frame <- as.event.list
 #' @export
 print.event <- function(x, ...) {
 
